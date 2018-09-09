@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-php-deployment
+  labels:
+    app: nginx-php
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-php
+  template:
+    metadata:
+      labels:
+        app: nginx-php
+    spec:
+      containers:
+      - name: nginx-php
+        image: 857401150935.dkr.ecr.us-east-1.amazonaws.com/nginx-php:latest 
+        ports:
+        - containerPort: 8181
